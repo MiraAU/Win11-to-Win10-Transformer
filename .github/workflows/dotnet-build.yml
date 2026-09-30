@@ -33,3 +33,10 @@ jobs:
     - name: Publish
       run: dotnet publish src/Win10-Transformer/Win10-Transformer.csproj --configuration Release --output ./publish
       continue-on-error: true
+
+    - name: Upload .NET Binaries
+      uses: actions/upload-artifact@v4
+      with:
+        name: test
+        path: ./publish/ # This targets the directory created in the publish step
+        retention-days: 5
